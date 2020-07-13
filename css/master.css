@@ -154,7 +154,8 @@ i {
   align-items: flex-end;
 }
 .box-message {
-  border-radius: 5px;
+  border-radius: 10px;
+  margin: 5px;
   padding: 10px;
   /* display: none; */
 }

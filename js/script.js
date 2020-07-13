@@ -1,5 +1,5 @@
 function sendMessage () {
-  
+
   var btn = $('#btnMessage');
   var boxMessageUser = $('.box-message.user');
 
