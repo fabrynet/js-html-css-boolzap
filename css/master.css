@@ -104,6 +104,7 @@ i {
   background-color: #fff;
   width: 100%;
   height: calc(100% - 180px);
+  overflow-y: auto;
 }
 .contact {
   width: 100%;
@@ -152,6 +153,7 @@ i {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
+  overflow-y: auto;
 }
 .box-message {
   border-radius: 10px;
