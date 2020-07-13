@@ -59,7 +59,7 @@ button {
   /* debug */
   /* background-color: green; */
 }
-.list-chat {
+.thread-chat {
   width: 100%;
   height: calc(100% - 100px);
   background-color: #e5ddd4;
@@ -69,15 +69,15 @@ button {
   flex-flow: column nowrap;
   align-items: flex-end;
 }
-.template-box-message {
+.box-message {
   border-radius: 5px;
   padding: 10px;
-  display: none;
+  /* display: none; */
 }
-.template-box-message.user {
+.box-message.user {
   background-color: #d5f9ba;
 }
-.template-box-message.interlocutor {
+.box-message.interlocutor {
   background-color: #fff;
   align-self: flex-start;
 }
