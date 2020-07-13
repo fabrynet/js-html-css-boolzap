@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 body {
-  font-style: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
   background-color: #dcdbd2;
 }
 input {
@@ -22,9 +22,14 @@ button {
   border: none;
   padding: 10px;
 }
+i {
+  font-size: 1.6em;
+  color: #b1b1b1;
+  margin: 0 10px;
+}
 .top-background {
   width: 100%;
-  height: 150px;
+  height: 120px;
   background-color: #029588;
 }
 /* container web app */
@@ -35,22 +40,98 @@ button {
   top: 3vh;
   left: 5%;
   /* debug */
-  background-color: coral;
+  /* background-color: coral; */
 }
 .banner {
   width: 100%;
-  height: 50px;
-  /* debug */
-  background-color: red;
+  height: 70px;
+  background-color: #eaeaea;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
+
 /* contatti */
 .contacts {
   width: 30%;
   height: 100%;
   float: left;
+  border-right: 1px solid #ccc;
   /* debug */
-  background-color: pink;
+  /* background-color: pink; */
 }
+.user-avatar {
+  height: 50px;
+  display: block;
+}
+.notifications {
+  background-color: #9ed9f8;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.notifications i {
+  color: #9ed9f8;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.notifications-title {
+  width: 90%;
+}
+.notifications .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.notifications .subtitle a {
+  color: #577383;
+}
+.search-bar {
+  background-color: #fafafa;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contacts-list {
+  background-color: #fff;
+  width: 100%;
+  height: calc(100% - 180px);
+}
+.contact {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #e9ebeb;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.contact:hover {
+  cursor: pointer;
+}
+.contact-name {
+  flex-basis: 70%;
+}
+.contact.active {
+  background-color: #e9ebeb;
+}
+.contact .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.contact .subtitle {
+  color: #b7b9bb;
+}
+
 /* chat */
 .chat {
   width: 70%;
@@ -59,9 +140,12 @@ button {
   /* debug */
   /* background-color: green; */
 }
-.thread-chat {
+.chat .banner .contact {
+  width: 400px;
+}
+.chat-thread {
   width: 100%;
-  height: calc(100% - 100px);
+  height: calc(100% - 120px);
   background-color: #e5ddd4;
   background-image: url('../img/chat-background.png');
   padding: 30px;

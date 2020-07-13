@@ -1,13 +1,17 @@
 function sendMessage () {
-  var message = $('#inputMessage').val();
-  console.log(message);
+  
   var btn = $('#btnMessage');
   var boxMessageUser = $('.box-message.user');
-  var cloneBoxMessageUser = boxMessageUser.clone();
+
   btn.click(function(){
-    var messageUser = cloneBoxMessageUser.text(message);
-    console.log(messageUser);
-    $('.thread-chat').append(messageUser);
+    var message = $('#inputMessage').val();
+    var cloneBoxMessageUser = boxMessageUser.clone();
+    console.log(message);
+    if (message!="") {
+      var messageUser = cloneBoxMessageUser.text(message);
+      console.log(messageUser);
+      $('.chat-thread').append(messageUser);
+    }
   });
 }
 
