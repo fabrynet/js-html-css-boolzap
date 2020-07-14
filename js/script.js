@@ -7,20 +7,22 @@ function addSendListener(){
 }
 
 function sendKeyup(event) {
-  var target = $(this);
-  var txt = target.val();
+  var input = $(this);
+  var txt = input.val();
   var keyWhich = event.which;
   var keyCode = event.keyCode;
   if ( (keyWhich == 13 || keyCode == 13) && txt) {
+    input.val('');
     sendMessage(txt);
     receiveMessage();
   }
 }
 
 function sendClick () {
-  var target = $('#input-message');
-  var txt = target.val();
+  var input = $('#input-message');
+  var txt = input.val();
   if (txt) {
+    input.val('');
     sendMessage(txt);
     receiveMessage();
   }
@@ -35,7 +37,6 @@ function sendMessage (txt) {
   templateSent.find('.message-text').text(txt);
   $('.chat-thread').append(templateSent);
 
-  $('#input-message').val('');
 }
 
 function receiveMessage () {
