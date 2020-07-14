@@ -37,6 +37,9 @@ i {
   height: 120px;
   background-color: #029588;
 }
+.contact.hidden {
+  display: none;
+}
 /* container web app */
 .container {
   width: 90%;
