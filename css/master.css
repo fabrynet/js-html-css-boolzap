@@ -9,11 +9,16 @@ body {
   background-color: #dcdbd2;
 }
 input {
-  border-radius: 20px;
+  border-radius: 10px;
   height: 30px;
   width: 90%;
   border: none;
   margin: 0 auto;
+  padding: 10px;
+}
+.input-message input {
+  height: 40px;
+  font-size: 20px;
 }
 button {
   background-color: #029588;
@@ -86,7 +91,7 @@ i {
   width: 90%;
 }
 .notifications .title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 .notifications .subtitle a {
@@ -146,7 +151,7 @@ i {
 }
 .chat-thread {
   width: 100%;
-  height: calc(100% - 120px);
+  height: calc(100% - 130px);
   background-color: #e5ddd4;
   background-image: url('../img/chat-background.png');
   padding: 30px;
@@ -159,7 +164,14 @@ i {
   border-radius: 10px;
   margin: 5px;
   padding: 10px;
-  /* display: none; */
+  position: relative;
+  filter: drop-shadow(2px 2px 4px #b7b9bb);
+}
+.box-message .time-message {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 10px;
 }
 .box-message.user {
   background-color: #d5f9ba;
@@ -168,9 +180,31 @@ i {
   background-color: #fff;
   align-self: flex-start;
 }
+.box-message.user::before {
+  position: absolute;
+  top: 20px;
+  left: -5px;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background-color: #d5f9ba;
+}
+.box-message.interlocutor::before {
+  position: absolute;
+  top: 20px;
+  right: -5px;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background-color: #fff;
+}
 .input-message {
   width: 100%;
-  height: 50px;
+  height: 60px;
   background-color: #e5ddd4;
   display: flex;
   flex-flow: row nowrap;
