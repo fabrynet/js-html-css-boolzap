@@ -232,7 +232,7 @@ i {
   left: 0;
 }
 .message-box-options-panel ul {
-  list-style: none;
+  list-style-type: none;
 }
 .message-box-options-panel ul li:hover {
   color: #000;

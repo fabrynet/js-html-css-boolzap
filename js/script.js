@@ -12,7 +12,7 @@ function searchKeyup() {
   console.log(query);
   // le confronto con le lettere presenti nei nomi dei contatti
   $('.contacts-list .contact').each(function(){
-    var name = $(this).find('.title').html();
+    var name = $(this).find('.title').html().toLowerCase();
     console.log(name);
     var resultQuery = name.search(query);
     console.log('result Query',resultQuery);
