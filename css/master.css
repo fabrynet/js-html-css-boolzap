@@ -85,7 +85,7 @@ i {
   color: #9ed9f8;
   padding: 10px;
   background-color: #fff;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 .notifications-title {
   width: 90%;
@@ -142,7 +142,7 @@ i {
 .chat {
   width: 70%;
   height: 100%;
-  margin-left: 30%;
+  float: left;
   /* debug */
   /* background-color: green; */
 }
@@ -160,27 +160,27 @@ i {
   align-items: flex-end;
   overflow-y: auto;
 }
-.box-message {
+.message-box {
   border-radius: 10px;
   margin: 5px;
   padding: 10px;
   position: relative;
   filter: drop-shadow(2px 2px 4px #b7b9bb);
 }
-.box-message .time-message {
+.message-box .message-time {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 5px;
+  right: 5px;
   font-size: 10px;
 }
-.box-message.user {
+.message-box.sent {
   background-color: #d5f9ba;
 }
-.box-message.interlocutor {
+.message-box.received {
   background-color: #fff;
   align-self: flex-start;
 }
-.box-message.user::before {
+.message-box.sent::before {
   position: absolute;
   top: 20px;
   left: -5px;
@@ -191,7 +191,7 @@ i {
   transform: rotate(45deg);
   background-color: #d5f9ba;
 }
-.box-message.interlocutor::before {
+.message-box.received::before {
   position: absolute;
   top: 20px;
   right: -5px;

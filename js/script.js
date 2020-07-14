@@ -1,53 +1,64 @@
-function sendMessage () {
-
-  var message = $('#input-message');
-
-  if (message.val()!="") {
-
-    var d = new Date();
-    var time = d.getHours() + ":" + d.getMinutes();
-    console.log(time);
-    var timeMessageUser = $('.time-message.user').html(time);
-    var timeMessageInterlocutor = $('.time-message.interlocutor').html(time);
-
-    var boxMessageUser = $('.box-message.user').clone();
-    var boxMessageInterlocutor = $('.box-message.interlocutor').clone();
-
-    console.log(message);
-    console.log(message.val());
-    console.log(boxMessageUser);
-
-    var messageUser = boxMessageUser.html(message.val());
-    $('.chat-thread').append(messageUser);
-
-    setTimeout(function(){
-      var messageInterlocutor = boxMessageInterlocutor.html('ok');
-      $('.chat-thread').append(messageInterlocutor);
-    }, 1000)
-
-  }
-  message.val('');
+// Functions Procedurali
+function addSendListener(){
+  var targetInput = $('#input-message');
+  var targetButton = $('#button-message');
+  targetInput.keyup(sendKeyup);
+  targetButton.click(sendClick);
 }
 
-function eventEnter () {
+function sendKeyup(event) {
+  var target = $(this);
+  var txt = target.val();
   var keyWhich = event.which;
   var keyCode = event.keyCode;
-  if (keyWhich == 13 || keyCode == 13) {
-    sendMessage();
+  if ( (keyWhich == 13 || keyCode == 13) && txt) {
+    sendMessage(txt);
+    receiveMessage();
   }
 }
 
-function inputMessage () {
+function sendClick () {
+  var target = $('#input-message');
+  var txt = target.val();
+  if (txt) {
+    sendMessage(txt);
+    receiveMessage();
+  }
+}
 
-  var btnMessage = $('#btn-message');
-  var inputMessage = $('#input-message');
+function sendMessage (txt) {
 
-  btnMessage.click(sendMessage);
-  inputMessage.keyup(eventEnter);
+  var time = getActualHour();
+  var templateSent = $('.template .message-box.sent').clone();
+
+  templateSent.find('.message-time').text(time);
+  templateSent.find('.message-text').text(txt);
+  $('.chat-thread').append(templateSent);
+
+  $('#input-message').val('');
+}
+
+function receiveMessage () {
+
+  var time = getActualHour();
+  var templateReceived = $('.template .message-box.received').clone();
+
+  setTimeout(function(){
+    templateReceived.find('.message-time').text(time);
+    templateReceived.find('.message-text').text('ok');
+    $('.chat-thread').append(templateReceived);
+  }, 1000);
 }
 
 function init () {
-  inputMessage();
+  addSendListener();
 }
 
 $(document).ready(init);
+
+// Functions Utilities
+function getActualHour () {
+  var d = new Date();
+  var time = d.getHours() + ":" + d.getMinutes();
+  return time;
+}

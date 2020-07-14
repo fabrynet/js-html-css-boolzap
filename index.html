@@ -35,6 +35,7 @@
           </div>
         </div>
         <div class="search-bar">
+          <label for="inputSearch"><i class="fas fa-search"></i></label>
           <input type="text" id="inputSearch" name="" value="" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="contacts-list">
@@ -141,25 +142,53 @@
           </div>
         </div>
         <div class="chat-thread">
+          <div class="message-box sent">
+            <span class="message-text">Messaggio statico</span>
+            <span class="message-time">10:10</span>
+            <a href="#"><i class="fas fa-chevron-down"></i></a>
+            <div class="message-option-panel">
+              <div class="message-info">
+                Info Messaggio
+              </div>
+              <div class="message-delete">
+                Cancella Messaggio
+              </div>
+            </div>
+          </div>
         </div>
         <div class="input-message">
           <a href="#"><i class="far fa-smile"></i></a>
           <input type="text" id="input-message" name="inputMessage" value="" placeholder="Scrivi un messaggio">
-          <a href="#"><i class="fas fa-microphone"></i></a>
-          <button type="button" id="btn-message" name="button">Invia</button>
+          <a href="#" id="button-message"><i class="fab fa-telegram-plane"></i></a>
         </div>
       </div>
     </div>
     <!-- template -->
     <div class="template" style="display:none;">
-      <div class="box-message user">
-        <div class="time-message user">
-
+      <div class="message-box sent">
+        <span class="message-text"></span>
+        <span class="message-time"></span>
+        <a href="#"><i class="fas fa-chevron-down"></i></a>
+        <div class="message-option-panel">
+          <div class="message-info">
+            Info Messaggio
+          </div>
+          <div class="message-delete">
+            Cancella Messaggio
+          </div>
         </div>
       </div>
-      <div class="box-message interlocutor">
-        <div class="time-message interlocutor">
-
+      <div class="message-box received">
+        <span class="message-text"></span>
+        <span class="message-time"></span>
+        <a href="#"><i class="fas fa-chevron-down"></i></a>
+        <div class="message-option-panel">
+          <div class="message-info">
+            Info Messaggio
+          </div>
+          <div class="message-delete">
+            Cancella Messaggio
+          </div>
         </div>
       </div>
     </div>
