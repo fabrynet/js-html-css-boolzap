@@ -1,16 +1,47 @@
 // Functions Procedurali
 function addListeners () {
 
-  var targetInput = $('#input-message');
-  var targetButton = $('#button-message');
+  var messageInput = $('#input-message');
+  var messageButton = $('#button-message');
   var searchInput = $('#input-search');
+  var contacts = $('.contacts-list .contact');
 
-  targetInput.keyup(sendKeyup);
-  targetButton.click(sendClick);
+  messageInput.keyup(sendKeyup);
+  messageButton.click(sendClick);
   searchInput.keyup(searchKeyup);
+  contacts.click(selectContact);
   $(document).on('click','.message-box-options', toggleMessageOptions);
   $(document).on('mouseleave','.message-box-options', hideMessageOptions);
   $(document).on('click','.message-box-options .message-delete', messageDelete);
+}
+
+function selectContact () {
+  var contact = $(this);
+  var contactSelected = contact.attr('data-contact');
+  // console.log(contactSelected);
+  var contacts = $('.contacts-list .contact');
+
+  contacts.each(function(){
+    var contact = $(this);
+    contact.removeClass('active');
+  });
+  
+  contact.addClass('active');
+
+  showChat(contactSelected);
+}
+
+function showChat (contactSelected) {
+  var chat = $('.chat-thread .message-box');
+  var contacts = $('.contacts-list .contact');
+  chat.each(function() {
+    var message = $(this);
+    if (message.attr('data-contact')==contactSelected) {
+      message.show();
+    } else {
+      message.hide();
+    }
+  });
 }
 
 function messageDelete () {
@@ -21,14 +52,14 @@ function messageDelete () {
 function toggleMessageOptions () {
   var btn = $(this);
   var menuPanel = btn.find('.message-box-options-panel');
-  console.log(menuPanel);
+  // console.log(menuPanel);
   menuPanel.toggle();
 }
 
 function hideMessageOptions () {
   var btn = $(this);
   var menuPanel = btn.find('.message-box-options-panel');
-    menuPanel.hide();
+  menuPanel.hide();
 }
 
 function searchKeyup() {
@@ -97,8 +128,19 @@ function sendMessage(txt, type) {
   var time = getActualHour();
   var templateMessage = $('.template .message-box').clone();
   var target = $('.chat-thread');
+  var contacts = $('.contacts-list .contact');
+  var selectedContact = 0;
+
+  contacts.each(function(){
+    var contact = $(this);
+    if (contact.hasClass('active')) {
+      selectedContact = contact.attr('data-contact');
+      console.log('contatto selezionato',selectedContact);
+    }
+  });
 
   templateMessage.addClass(type);
+  templateMessage.attr('data-contact',selectedContact);
 
   templateMessage.find('.message-time').text(time);
   templateMessage.find('.message-text').text(txt);
