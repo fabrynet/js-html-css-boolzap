@@ -166,7 +166,7 @@ i {
 .message-box {
   border-radius: 10px;
   margin: 5px;
-  padding: 15px;
+  padding: 0 20px;
   position: relative;
   filter: drop-shadow(2px 2px 4px #b7b9bb);
 }
@@ -208,6 +208,7 @@ i {
 .message-box-options {
   opacity: 0;
   font-size: 16px;
+  padding: 20px 0;
 }
 .message-box:hover .message-box-options {
   opacity: 1;
@@ -238,9 +239,9 @@ i {
   color: #000;
   transition: color 0.2s;
 }
-.message-box-options:hover .message-box-options-panel {
+/* .message-box-options:hover .message-box-options-panel {
   display: block;
-}
+} */
 
 .input-message {
   width: 100%;

@@ -8,6 +8,27 @@ function addListeners () {
   targetInput.keyup(sendKeyup);
   targetButton.click(sendClick);
   searchInput.keyup(searchKeyup);
+  $(document).on('click','.message-box-options', toggleMessageOptions);
+  $(document).on('mouseleave','.message-box-options', hideMessageOptions);
+  $(document).on('click','.message-box-options .message-delete', messageDelete);
+}
+
+function messageDelete () {
+  var btn = $(this);
+  btn.parents('.message-box').remove();
+}
+
+function toggleMessageOptions () {
+  var btn = $(this);
+  var menuPanel = btn.find('.message-box-options-panel');
+  console.log(menuPanel);
+  menuPanel.toggle();
+}
+
+function hideMessageOptions () {
+  var btn = $(this);
+  var menuPanel = btn.find('.message-box-options-panel');
+    menuPanel.hide();
 }
 
 function searchKeyup() {
