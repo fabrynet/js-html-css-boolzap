@@ -28,6 +28,20 @@ function selectContact () {
   conversations.removeClass('active').hide('slow');
   selectConversation.addClass('active').show('slow');
 
+  contactBanner();
+}
+
+function contactBanner () {
+  var contactActive = $('.contacts-list .contact.active');
+  var name = contactActive.find('.title').text();
+  var slogan = contactActive.find('.subtitle').text();
+  var image = contactActive.find('.user-avatar').attr('src');
+
+  var contactBanner = $('#contact-banner');
+
+  contactBanner.find('.title').text(name);
+  contactBanner.find('.subtitle').text(slogan);
+  contactBanner.find('.user-avatar').attr('src',image);
 }
 
 function messageDelete () {

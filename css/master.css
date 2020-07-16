@@ -140,6 +140,12 @@ i {
 .contact .subtitle {
   color: #b7b9bb;
 }
+#contact-banner .contact {
+  width: 600px;
+}
+#contact-banner .contact .contact-name {
+  flex-basis: 80%;
+}
 
 /* chat */
 .chat-box {
