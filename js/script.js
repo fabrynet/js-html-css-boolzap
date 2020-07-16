@@ -17,31 +17,17 @@ function addListeners () {
 
 function selectContact () {
   var contact = $(this);
-  var contactSelected = contact.attr('data-contact');
-  // console.log(contactSelected);
+  var contactSelected = contact.data('contact');
   var contacts = $('.contacts-list .contact');
+  var conversations = $('.chat');
+  var selectConversation = $('.chat[data-contact=' + contactSelected + ']');
 
-  contacts.each(function(){
-    var contact = $(this);
-    contact.removeClass('active');
-  });
-  
+  contacts.removeClass('active');
   contact.addClass('active');
 
-  showChat(contactSelected);
-}
+  conversations.removeClass('active').hide('slow');
+  selectConversation.addClass('active').show('slow');
 
-function showChat (contactSelected) {
-  var chat = $('.chat-thread .message-box');
-  var contacts = $('.contacts-list .contact');
-  chat.each(function() {
-    var message = $(this);
-    if (message.attr('data-contact')==contactSelected) {
-      message.show();
-    } else {
-      message.hide();
-    }
-  });
 }
 
 function messageDelete () {
@@ -77,26 +63,8 @@ function searchKeyup() {
     } else {
       contact.hide();
     }
-    // var resultQuery = name.search(query);
-    // // se non ci sono delle corrispondenze nascondo quel nome attraverso la classe .hidden
-    // if (resultQuery == -1) {
-    //   console.log('trovata corrispondenza', name.search(query));
-    //   $(this).addClass('hidden');
-    // } else {
-    //   $(this).removeClass('hidden');
-    // }
-    // // se la barra di ricerca è vuota rimuovo tutti gli .hidden
-    // if (!query) {
-    //   $(this).removeClass('hidden');
-    // }
-  });
-}
 
-function addSendListener(){
-  var targetInput = $('#input-message');
-  var targetButton = $('#button-message');
-  targetInput.keyup(sendKeyup);
-  targetButton.click(sendClick);
+  });
 }
 
 function sendKeyup(event) {
@@ -127,24 +95,14 @@ function sendMessage(txt, type) {
 
   var time = getActualHour();
   var templateMessage = $('.template .message-box').clone();
-  var target = $('.chat-thread');
-  var contacts = $('.contacts-list .contact');
-  var selectedContact = 0;
-
-  contacts.each(function(){
-    var contact = $(this);
-    if (contact.hasClass('active')) {
-      selectedContact = contact.attr('data-contact');
-      console.log('contatto selezionato',selectedContact);
-    }
-  });
+  var chatActive = $('.chat.active');
 
   templateMessage.addClass(type);
-  templateMessage.attr('data-contact',selectedContact);
-
   templateMessage.find('.message-time').text(time);
   templateMessage.find('.message-text').text(txt);
-  $('.chat-thread').append(templateMessage);
+
+  chatActive.append(templateMessage);
+  // console.log(chatActive);
 
 }
 

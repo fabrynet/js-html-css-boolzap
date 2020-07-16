@@ -155,9 +155,9 @@
         <!-- /contact-list -->
       </div>
       <!-- chat -->
-      <div class="chat">
+      <div class="chat-box">
         <div class="banner">
-          <div class="contact">
+          <div class="contact" data-contact='0'>
             <img src="./img/avataaars_male.png" alt="Avatar Male" class="user-avatar">
             <div class="contact-name">
               <div class="title">
@@ -176,33 +176,45 @@
         </div>
         <!-- chat thread -->
         <div class="chat-thread">
-          <!-- esempio messaggio inviato -->
-          <div class="message-box sent">
-            <span class="message-text">Messaggio statico inviato</span>
-            <span class="message-time">10:10</span>
-            <i class="fas fa-chevron-down message-box-options">
-              <div class="message-box-options-panel">
-                <ul>
-                  <li class="message-info">Info Messaggio</li>
-                  <li class="message-delete">Cancella Messaggio</li>
-                </ul>
-              </div>
-            </i>
+
+          <div class="chat active" data-contact='0'>
+            <!-- esempio messaggio inviato -->
+            <div class="message-box sent">
+              <span class="message-text">Messaggio statico inviato</span>
+              <span class="message-time">10:10</span>
+              <i class="fas fa-chevron-down message-box-options">
+                <div class="message-box-options-panel">
+                  <ul>
+                    <li class="message-info">Info Messaggio</li>
+                    <li class="message-delete">Cancella Messaggio</li>
+                  </ul>
+                </div>
+              </i>
+            </div>
+            <!-- esempio messaggio ricevuto -->
+            <div class="message-box received">
+              <span class="message-text">Messaggio statico ricevuto</span>
+              <span class="message-time">10:11</span>
+              <i class="fas fa-chevron-down message-box-options">
+                <div class="message-box-options-panel">
+                  <ul>
+                    <li class="message-info">Info Messaggio</li>
+                    <li class="message-delete">Cancella Messaggio</li>
+                  </ul>
+                </div>
+              </i>
+            </div>
           </div>
-          <!-- esempio messaggio ricevuto -->
-          <div class="message-box received">
-            <span class="message-text">Messaggio statico ricevuto</span>
-            <span class="message-time">10:11</span>
-            <i class="fas fa-chevron-down message-box-options">
-              <div class="message-box-options-panel">
-                <ul>
-                  <li class="message-info">Info Messaggio</li>
-                  <li class="message-delete">Cancella Messaggio</li>
-                </ul>
-              </div>
-            </i>
-          </div>
+          <div class="chat" data-contact='1'></div>
+          <div class="chat" data-contact='2'></div>
+          <div class="chat" data-contact='3'></div>
+          <div class="chat" data-contact='4'></div>
+          <div class="chat" data-contact='5'></div>
+          <div class="chat" data-contact='6'></div>
+
         </div>
+        <!-- chat thread -->
+
         <div class="input-message">
           <a href="#"><i class="far fa-smile"></i></a>
           <input type="text" id="input-message" name="inputMessage" value="" placeholder="Scrivi un messaggio">
