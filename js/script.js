@@ -134,10 +134,10 @@ function insertLastMessage () {
 }
 
 function randomReply () {
-  var words = [' ','Ok. ','Va bene. ','Vedremo. ','Ci penso. ','Può darsi. ','Non mi interessa. ','Mi piace! ','Ciao. ','ti devo lasciare. ','Cosa fai? ','Ti raggiungo fra 10 minuti. ','Bye bye. ','Buona fortuna! ','In bocca al lupo! ','Congratulazioni! ','Buon appetito. ','Saluti. ','Ho capito. ','A che ora arrivi? ','Buongiorno. ','Buonanotte. '];
-  var randomLength = getRandomIntInclusive(1,3);
+  var words = ['Ok. ','Va bene. ','Vedremo. ','Ci penso. ','Può darsi. ','Non mi interessa. ','Mi piace! ','Ciao. ','ti devo lasciare. ','Che fai di bello? ','Ti raggiungo fra 10 minuti. ','Bye bye. ','Buona fortuna! ','In bocca al lupo! ','Congratulazioni! ','Buon appetito. ','Saluti. ','Ho capito. ','A che ora arrivi? ','Buongiorno. ','Buonanotte. ','Stasera che fai?'];
+  var randomMessageLength = getRandomIntInclusive(1,3);
   var message = '';
-  for (var i = 0; i < randomLength; i++) {
+  for (var i = 0; i < randomMessageLength; i++) {
     message += words[getRandomIntInclusive(0,words.length - 1)]
   }
   // console.log(message);
