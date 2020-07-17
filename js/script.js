@@ -101,8 +101,10 @@ function sendClick() {
 function sendChat(input, txt) {
   input.val('');
   sendMessage(txt, 'sent');
-  setTimeout(function(){ sendMessage('ok','received')}, 1000);
-  insertLastMessage();
+  setTimeout(function(){
+    sendMessage(randomReply,'received');
+    insertLastMessage();
+  }, 1000);
 }
 
 function sendMessage(txt, type) {
@@ -122,13 +124,24 @@ function sendMessage(txt, type) {
 
 function insertLastMessage () {
   var contactActive = $('.contacts .contact.active');
-  var lastMessage = $('.chat.active .message-box.sent').last().find('.message-text').text();
-  var lastMessageTime = $('.chat.active .message-box.sent').last().find('.message-time').text();
+  var lastMessage = $('.chat.active .message-box').last().find('.message-text').text();
+  var lastMessageTime = $('.chat.active .message-box').last().find('.message-time').text();
   if (lastMessage.length > 30) {
     lastMessage = lastMessage.substring(0, 29) + '...';
   }
   contactActive.find('.last-message').empty().append(lastMessage);
   contactActive.find('.last-message-time').empty().append(lastMessageTime);
+}
+
+function randomReply () {
+  var words = [' ','Ok. ','Va bene. ','Vedremo. ','Ci penso. ','Può darsi. ','Non mi interessa. ','Mi piace! ','Ciao. ','ti devo lasciare. ','Cosa fai? ','Ti raggiungo fra 10 minuti. ','Bye bye. ','Buona fortuna! ','In bocca al lupo! ','Congratulazioni! ','Buon appetito. ','Saluti. ','Ho capito. ','A che ora arrivi? ','Buongiorno. ','Buonanotte. '];
+  var randomLength = getRandomIntInclusive(1,3);
+  var message = '';
+  for (var i = 0; i < randomLength; i++) {
+    message += words[getRandomIntInclusive(0,words.length - 1)]
+  }
+  // console.log(message);
+  return message;
 }
 
 function init() {
@@ -138,10 +151,17 @@ function init() {
 $(document).ready(init);
 
 // Functions Utilities
+// funzione che restituisce l'orario attuale a due cifre
 function getActualHour () {
   var d = new Date();
   var hours = ("0" + d.getHours()).slice(-2);
   var minutes = ("0" + d.getMinutes()).slice(-2)
   var time = hours + ":" + minutes;
   return time;
+}
+// funzione che genera un numero casuale compreso tra i due parametri min e max
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //Il max è incluso e il min è incluso
 }
