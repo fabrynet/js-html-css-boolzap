@@ -124,7 +124,9 @@ function insertLastMessage () {
   var contactActive = $('.contacts .contact.active');
   var lastMessage = $('.chat.active .message-box.sent').last().find('.message-text').text();
   var lastMessageTime = $('.chat.active .message-box.sent').last().find('.message-time').text();
-
+  if (lastMessage.length > 30) {
+    lastMessage = lastMessage.substring(0, 29) + '...';
+  }
   contactActive.find('.last-message').empty().append(lastMessage);
   contactActive.find('.last-message-time').empty().append(lastMessageTime);
 }
@@ -138,6 +140,8 @@ $(document).ready(init);
 // Functions Utilities
 function getActualHour () {
   var d = new Date();
-  var time = d.getHours() + ":" + d.getMinutes();
+  var hours = ("0" + d.getHours()).slice(-2);
+  var minutes = ("0" + d.getMinutes()).slice(-2)
+  var time = hours + ":" + minutes;
   return time;
 }
