@@ -144,7 +144,8 @@ i {
   font-weight: bold;
 }
 .contact .last-message,
-.contact .last-message-time {
+.contact .last-message-time,
+.contact .last-access {
   color: #b7b9bb;
 }
 #contact-banner .contact {
@@ -177,7 +178,7 @@ i {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
-  padding: 30px;
+  padding: 20px 50px;
 }
 /* .chat-thread .chat.active {
   display: block;
@@ -256,7 +257,8 @@ i {
 }
 .message-box-options-panel ul li:hover {
   color: #000;
-  transition: color 0.2s;
+  background-color: #e9ebeb;
+  transition: 0.2s;
 }
 
 .input-message {

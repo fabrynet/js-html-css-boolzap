@@ -35,11 +35,17 @@ function contactBanner () {
   var contactActive = $('.contacts-list .contact.active');
   var name = contactActive.find('.name').text();
   var image = contactActive.find('.user-avatar').attr('src');
+  var lastAccess = checkLastAccess();
 
   var contactBanner = $('#contact-banner');
 
   contactBanner.find('.name').text(name);
   contactBanner.find('.user-avatar').attr('src',image);
+  if (lastAccess) {
+    contactBanner.find('.last-access').empty().append('Ultimo accesso effettuato oggi alle ' + lastAccess);
+  } else {
+    contactBanner.find('.last-access').empty().append('Ultimo accesso effettuato di recente');
+  }
 }
 
 function messageDelete () {
@@ -127,7 +133,7 @@ function sendMessage(txt, type) {
 function insertLastMessage () {
   var contactActive = $('.contacts .contact.active');
   var lastMessage = $('.chat.active .message-box').last().find('.message-text').text();
-  var lastMessageTime = $('.chat.active .message-box').last().find('.message-time').text();
+  var lastMessageTime = checkLastMessageTime();
   if (lastMessage.length > 30) {
     lastMessage = lastMessage.substring(0, 29) + '...';
   }
@@ -157,6 +163,16 @@ function randomReply () {
   }
 
   return message;
+}
+
+function checkLastAccess () {
+  var lastMessageTime = $('.chat.active .message-box.received').last().find('.message-time').text();
+  return lastMessageTime;
+}
+
+function checkLastMessageTime () {
+  var lastMessageTime = $('.chat.active .message-box').last().find('.message-time').text();
+  return lastMessageTime;
 }
 
 function init() {
