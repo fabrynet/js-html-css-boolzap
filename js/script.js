@@ -134,13 +134,26 @@ function insertLastMessage () {
 }
 
 function randomReply () {
-  var words = ['Ok. ','Va bene. ','Vedremo. ','Ci penso. ','Può darsi. ','Non mi interessa. ','Mi piace! ','Ciao. ','ti devo lasciare. ','Che fai di bello? ','Ti raggiungo fra 10 minuti. ','Bye bye. ','Buona fortuna! ','In bocca al lupo! ','Congratulazioni! ','Buon appetito. ','Saluti. ','Ho capito. ','A che ora arrivi? ','Buongiorno. ','Buonanotte. ','Stasera che fai?'];
+  var words = ['Ok. ','Va bene. ','Vedremo. ','Ci penso. ','Può darsi. ','Non mi interessa. ','Mi piace! ','Ciao. ','Ti devo lasciare. ','Che fai di bello? ','Ti raggiungo fra 10 minuti. ','Bye bye. ','Buona fortuna! ','In bocca al lupo! ','Congratulazioni! ','Buon appetito. ','Saluti. ','Ho capito. ','A che ora arrivi? ','Buongiorno. ','Buonanotte. ','Stasera che fai? '];
+  var wordsCount = words.length - 1;
   var randomMessageLength = getRandomIntInclusive(1,3);
-  var message = '';
-  for (var i = 0; i < randomMessageLength; i++) {
-    message += words[getRandomIntInclusive(0,words.length - 1)]
+
+  var wordRandom = '';
+  var messageArray = [];
+
+  // controllo che non ci siano parole ripetute
+  while (messageArray.length < randomMessageLength) {
+    wordRandom = words[getRandomIntInclusive(0,wordsCount)];
+    if (!inArray(messageArray,wordRandom)) {
+      messageArray.push(wordRandom);
+    }
   }
-  // console.log(message);
+
+  var message = '';
+  for (var i = 0; i < messageArray.length; i++) {
+    message += messageArray[i];
+  }
+
   return message;
 }
 
@@ -159,9 +172,23 @@ function getActualHour () {
   var time = hours + ":" + minutes;
   return time;
 }
+
 // funzione che genera un numero casuale compreso tra i due parametri min e max
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //Il max è incluso e il min è incluso
+}
+
+// funzione che controlla se un elemento è presente nell'array
+function inArray(array, element) {
+  var i = 0;
+  var found = false;
+  while (i < array.length && found == false) {
+    if(array[i] == element) {
+      found = true;
+    }
+    i++;
+  }
+  return found;
 }
