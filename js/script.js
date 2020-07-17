@@ -116,19 +116,22 @@ function sendClick() {
 
 function sendChat(input, txt) {
   input.val('');
-  sendMessage(txt, 'sent');
+  // passo l'id del data-contact per avere traccia della conversazione da cui è partito il messaggio
+  var id = $('.chat.active').data("contact");
+  sendMessage(txt, 'sent',id);
   setTimeout(function(){
-    sendMessage(randomReply,'received');
+    sendMessage(randomReply,'received',id);
     insertLastMessage();
   }, 1000);
   moveContactFirstPosition();
 }
 
-function sendMessage(txt, type) {
+function sendMessage(txt, type, id) {
 
   var time = getActualHour();
   var templateMessage = $('.template .message-box').clone();
-  var chatActive = $('.chat.active');
+  // var chatActive = $('.chat.active');
+  var chatActive = $('.chat[data-contact=' + id + ']')
 
   templateMessage.addClass(type);
   templateMessage.find('.message-time').text(time);
