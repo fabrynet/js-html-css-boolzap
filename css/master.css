@@ -184,11 +184,12 @@ i {
   display: block;
 } */
 .message-box {
+  position: relative;
   border-radius: 10px;
   margin: 5px;
   padding: 0 20px;
-  position: relative;
   filter: drop-shadow(2px 2px 4px #b7b9bb);
+  z-index: 1;
 }
 .message-box .message-time {
   position: absolute;
@@ -248,6 +249,7 @@ i {
   line-height: 30px;
   padding: 10px 20px;
   white-space: nowrap;
+  z-index: 1000;
 }
 .message-box.received .message-box-options-panel {
   left: 0;
@@ -259,6 +261,7 @@ i {
   color: #000;
   background-color: #e9ebeb;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .input-message {

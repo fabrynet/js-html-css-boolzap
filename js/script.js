@@ -10,9 +10,9 @@ function addListeners () {
   messageButton.click(sendClick);
   searchInput.keyup(searchKeyup);
   contacts.click(selectContact);
-  $(document).on('click','.message-box-options', toggleMessageOptions);
-  $(document).on('mouseleave','.message-box-options', hideMessageOptions);
-  $(document).on('click','.message-box-options .message-delete', messageDelete);
+  $(document).on('click','.message-box', toggleMessageOptions);
+  $(document).on('mouseleave','.message-box', hideMessageOptions);
+  $(document).on('click','.message-box .message-delete', messageDelete);
 }
 
 function selectContact () {
@@ -55,15 +55,15 @@ function messageDelete () {
 }
 
 function toggleMessageOptions () {
-  var btn = $(this);
-  var menuPanel = btn.find('.message-box-options-panel');
+  var messageBox = $(this);
+  var menuPanel = messageBox.find('.message-box-options-panel');
   // console.log(menuPanel);
   menuPanel.toggle();
 }
 
 function hideMessageOptions () {
-  var btn = $(this);
-  var menuPanel = btn.find('.message-box-options-panel');
+  var messageBox = $(this);
+  var menuPanel = messageBox.find('.message-box-options-panel');
   menuPanel.hide();
 }
 
