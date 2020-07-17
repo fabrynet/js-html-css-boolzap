@@ -127,24 +127,31 @@ i {
 .contact:hover {
   cursor: pointer;
 }
-.contact-name {
-  flex-basis: 70%;
-}
 .contact.active {
   background-color: #e9ebeb;
 }
-.contact .title {
+.contact .user-avatar {
+  /* flex-basis: 20%; */
+}
+.contact .contact-name {
+  flex-basis: 70%;
+}
+.contact .last-message-time {
+  flex-basis: 10%;
+}
+.contact .name {
   font-size: 20px;
   font-weight: bold;
 }
-.contact .subtitle {
+.contact .last-message,
+.contact .last-message-time {
   color: #b7b9bb;
 }
 #contact-banner .contact {
   width: 600px;
 }
 #contact-banner .contact .contact-name {
-  flex-basis: 80%;
+  flex-basis: 85%;
 }
 
 /* chat */

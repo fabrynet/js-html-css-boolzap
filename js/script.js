@@ -25,28 +25,27 @@ function selectContact () {
   contacts.removeClass('active');
   contact.addClass('active');
 
-  conversations.removeClass('active').hide('slow');
-  selectConversation.addClass('active').show('slow');
+  conversations.removeClass('active').hide();
+  selectConversation.addClass('active').show();
 
   contactBanner();
 }
 
 function contactBanner () {
   var contactActive = $('.contacts-list .contact.active');
-  var name = contactActive.find('.title').text();
-  var slogan = contactActive.find('.subtitle').text();
+  var name = contactActive.find('.name').text();
   var image = contactActive.find('.user-avatar').attr('src');
 
   var contactBanner = $('#contact-banner');
 
-  contactBanner.find('.title').text(name);
-  contactBanner.find('.subtitle').text(slogan);
+  contactBanner.find('.name').text(name);
   contactBanner.find('.user-avatar').attr('src',image);
 }
 
 function messageDelete () {
   var btn = $(this);
   btn.parents('.message-box').remove();
+  insertLastMessage();
 }
 
 function toggleMessageOptions () {
@@ -70,7 +69,7 @@ function searchKeyup() {
   // le confronto con le lettere presenti nei nomi dei contatti
   contacts.each(function(){
     var contact = $(this);
-    var name = contact.find('.title').text().toLowerCase();
+    var name = contact.find('.name').text().toLowerCase();
 
     if (name.includes(query)) {
       contact.show();
@@ -103,6 +102,7 @@ function sendChat(input, txt) {
   input.val('');
   sendMessage(txt, 'sent');
   setTimeout(function(){ sendMessage('ok','received')}, 1000);
+  insertLastMessage();
 }
 
 function sendMessage(txt, type) {
@@ -118,6 +118,15 @@ function sendMessage(txt, type) {
   chatActive.append(templateMessage);
   // console.log(chatActive);
 
+}
+
+function insertLastMessage () {
+  var contactActive = $('.contacts .contact.active');
+  var lastMessage = $('.chat.active .message-box.sent').last().find('.message-text').text();
+  var lastMessageTime = $('.chat.active .message-box.sent').last().find('.message-time').text();
+
+  contactActive.find('.last-message').empty().append(lastMessage);
+  contactActive.find('.last-message-time').empty().append(lastMessageTime);
 }
 
 function init() {
