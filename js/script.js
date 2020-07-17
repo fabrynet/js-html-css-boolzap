@@ -48,6 +48,14 @@ function contactBanner () {
   }
 }
 
+function moveContactFirstPosition () {
+  var contacts = $('.contacts-list');
+  var lastContact = $('.contacts-list .contact.active');
+  if (lastContact.index() > 0) {
+    lastContact.hide().show('slow').prependTo(contacts);
+  }
+}
+
 function messageDelete () {
   var btn = $(this);
   btn.parents('.message-box').remove();
@@ -113,6 +121,7 @@ function sendChat(input, txt) {
     sendMessage(randomReply,'received');
     insertLastMessage();
   }, 1000);
+  moveContactFirstPosition();
 }
 
 function sendMessage(txt, type) {
