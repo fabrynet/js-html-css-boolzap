@@ -85,6 +85,7 @@ function sendKeyup(event) {
   var txt = input.val();
   var keyWhich = event.which;
   var keyCode = event.keyCode;
+  // controllo la pressione del tasto invio e che sia stato immesso del testo
   if ( (keyWhich == 13 || keyCode == 13) && txt) {
     sendChat(input, txt);
   }
@@ -93,6 +94,7 @@ function sendKeyup(event) {
 function sendClick() {
   var input = $('#input-message');
   var txt = input.val();
+  // controllo che sia stato immesso del testo
   if (txt) {
     sendChat(input, txt);
   }
