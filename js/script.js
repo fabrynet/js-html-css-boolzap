@@ -56,19 +56,19 @@ function moveContactFirstPosition () {
   }
 }
 
+function toggleMessageOptions () {
+  var messageBox = $(this);
+  var menuPanel = messageBox.find('.message-box-options-panel');
+  // console.log(menuPanel);
+  menuPanel.toggle();
+}
+
 function messageDelete () {
   var btn = $(this);
   var id = btn.parents('.chat.active').data("contact");
 
   btn.parents('.message-box').remove();
   insertLastMessage(id);
-}
-
-function toggleMessageOptions () {
-  var messageBox = $(this);
-  var menuPanel = messageBox.find('.message-box-options-panel');
-  // console.log(menuPanel);
-  menuPanel.toggle();
 }
 
 function hideMessageOptions () {

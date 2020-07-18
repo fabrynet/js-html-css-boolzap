@@ -168,6 +168,25 @@
         <!-- chat thread -->
         <div class="chat-thread">
 
+          <!-- template -->
+          <div class="template" style="display:none;">
+            <!-- template messaggio -->
+            <div class="message-box" data-contact=''>
+              <div class="message-box-text">
+                <span class="message-text"></span>
+                <span class="message-time"></span>
+                <i class="fas fa-chevron-down message-box-options"></i>
+                <div class="message-box-options-panel">
+                  <ul>
+                    <li class="message-delete">Cancella Messaggio</li>
+                    <li class="message-info">Info Messaggio</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /template -->
+
           <div class="chat active" data-contact='0'>
             <!-- esempio messaggio inviato -->
             <div class="message-box sent">
@@ -189,7 +208,7 @@
               <div class="message-box-options-panel">
                 <ul>
                   <li class="message-delete">Cancella Messaggio</li>
-                  <li class="message-info">Info Messaggio</li>            
+                  <li class="message-info">Info Messaggio</li>
                 </ul>
               </div>
             </div>
@@ -213,26 +232,6 @@
         </div>
       </div>
     </div>
-
-    <!-- template -->
-    <div class="template" style="display:none;">
-
-      <!-- template messaggio -->
-      <div class="message-box" data-contact=''>
-        <span class="message-text"></span>
-        <span class="message-time"></span>
-        <i class="fas fa-chevron-down message-box-options"></i>
-        <div class="message-box-options-panel">
-          <ul>
-            <li class="message-delete">Cancella Messaggio</li>
-            <li class="message-info">Info Messaggio</li>
-          </ul>
-        </div>
-      </div>
-
-
-    </div>
-    <!-- /template -->
 
   </body>
 </html>
