@@ -58,8 +58,10 @@ function moveContactFirstPosition () {
 
 function messageDelete () {
   var btn = $(this);
+  var id = btn.parents('.chat.active').data("contact");
+
   btn.parents('.message-box').remove();
-  insertLastMessage();
+  insertLastMessage(id);
 }
 
 function toggleMessageOptions () {
@@ -121,7 +123,7 @@ function sendChat(input, txt) {
   sendMessage(txt, 'sent',id);
   setTimeout(function(){
     sendMessage(randomReply,'received',id);
-    insertLastMessage();
+    insertLastMessage(id);
   }, 1000);
   moveContactFirstPosition();
 }
@@ -142,15 +144,30 @@ function sendMessage(txt, type, id) {
 
 }
 
-function insertLastMessage () {
-  var contactActive = $('.contacts .contact.active');
-  var lastMessage = $('.chat.active .message-box').last().find('.message-text').text();
-  var lastMessageTime = checkLastMessageTime();
-  if (lastMessage.length > 30) {
-    lastMessage = lastMessage.substring(0, 29) + '...';
+function insertLastMessage (id) {
+  var contactActive = $('.contacts .contact[data-contact=' + id + ']');
+  var lastMessage = checkLastMessage(id);
+  var lastMessageText = lastMessage[0];
+  var lastMessageTime = lastMessage[1];;
+  if (lastMessageText.length > 30) {
+    lastMessageText = lastMessageText.substring(0, 29) + '...';
   }
-  contactActive.find('.last-message').empty().append(lastMessage);
+  contactActive.find('.last-message').empty().append(lastMessageText);
   contactActive.find('.last-message-time').empty().append(lastMessageTime);
+}
+
+function checkLastAccess () {
+  var lastMessageTime = $('.chat.active .message-box.received').last().find('.message-time').text();
+  return lastMessageTime;
+}
+
+function checkLastMessage (id) {
+  var chatActive = $('.chat[data-contact=' + id + ']');
+  var lastMessage = chatActive.find('.message-box').last();
+  var lastMessageText = lastMessage.find('.message-text').text();
+  var lastMessageTime = lastMessage.find('.message-time').text();
+  var lastMessageData = [lastMessageText, lastMessageTime];
+  return lastMessageData;
 }
 
 function randomReply () {
@@ -175,16 +192,6 @@ function randomReply () {
   }
 
   return message;
-}
-
-function checkLastAccess () {
-  var lastMessageTime = $('.chat.active .message-box.received').last().find('.message-time').text();
-  return lastMessageTime;
-}
-
-function checkLastMessageTime () {
-  var lastMessageTime = $('.chat.active .message-box').last().find('.message-time').text();
-  return lastMessageTime;
 }
 
 function init() {

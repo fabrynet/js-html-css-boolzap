@@ -195,7 +195,7 @@ i {
 .message-box .message-time {
   position: absolute;
   bottom: 5px;
-  right: 5px;
+  right: 10px;
   font-size: 10px;
 }
 .message-box.sent {
@@ -207,24 +207,26 @@ i {
 }
 .message-box.sent::before {
   position: absolute;
-  top: 5px;
-  right: -5px;
+  top: 0;
+  right: -10px;
   content: '';
   display: block;
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
+  width: 30px;
+  height: 10px;
+  border-radius: 0 0 50px 50px;
+  /* transform: rotate(45deg); */
   background-color: #d5f9ba;
 }
 .message-box.received::before {
   position: absolute;
-  top: 5px;
-  left: -5px;
+  top: 0;
+  left: -10px;
   content: '';
   display: block;
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
+  width: 30px;
+  height: 10px;
+  border-radius: 0 0 50px 50px;
+  /* transform: rotate(45deg); */
   background-color: #fff;
 }
 .message-box-options {
@@ -241,7 +243,7 @@ i {
   display: none;
   position: absolute;
   right: 0;
-  bottom: -60px;
+  bottom: -80px;
   min-width: 180px;
   height: 80px;
   background-color: #fff;
