@@ -60,7 +60,7 @@ function toggleMessageOptions () {
   var messageBox = $(this);
   var menuPanel = messageBox.find('.message-box-options-panel');
   // console.log(menuPanel);
-  menuPanel.toggle();
+  menuPanel.fadeToggle('fast');
 }
 
 function messageDelete () {
@@ -124,8 +124,9 @@ function sendChat(input, txt) {
   setTimeout(function(){
     sendMessage(randomReply,'received',id);
     insertLastMessage(id);
-  }, 1000);
+  }, 2000);
   moveContactFirstPosition();
+  insertLastMessage(id);
 }
 
 function sendMessage(txt, type, id) {

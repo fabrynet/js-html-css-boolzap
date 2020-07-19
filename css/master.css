@@ -35,7 +35,7 @@ button {
   padding: 10px;
 }
 i {
-  font-size: 1.6em;
+  font-size: 1.5em;
   color: #b1b1b1;
   margin: 0 10px;
 }
@@ -44,7 +44,7 @@ i {
   top: 0;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: 15vh;
   background-color: #029588;
   z-index: -1;
 }
@@ -53,8 +53,9 @@ i {
 }
 /* container web app */
 .container {
-  width: 1400px;
-  height: 94vh;
+  width: 1200px;
+  height: 90vh;
+  filter: drop-shadow(2px 2px 4px hsla(0,0%,50%,0.5));
   /* debug */
   /* background-color: coral; */
 }
@@ -67,6 +68,13 @@ i {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+}
+.buttons {
+  white-space: nowrap;
+}
+.handler {
+  width: 0;
+  height: 100%;
 }
 
 /* contatti */
@@ -82,6 +90,7 @@ i {
 .user-avatar {
   height: 50px;
   display: block;
+  padding-right: 20px;
 }
 .notifications {
   background-color: #9ed9f8;
@@ -101,6 +110,7 @@ i {
 }
 .notifications-title {
   width: 90%;
+  font-size: 14px;
 }
 .notifications .title {
   font-weight: bold;
@@ -138,9 +148,6 @@ i {
 .contact.active {
   background-color: #e9ebeb;
 }
-.contact .user-avatar {
-  /* flex-basis: 20%; */
-}
 .contact .contact-name {
   flex-basis: 70%;
 }
@@ -156,12 +163,6 @@ i {
 .contact .last-access {
   color: #b7b9bb;
 }
-#contact-banner .contact {
-  width: 450px;
-}
-#contact-banner .contact .contact-name {
-  flex-basis: 85%;
-}
 
 /* chat */
 .chat-box {
@@ -171,8 +172,11 @@ i {
   /* debug */
   /* background-color: green; */
 }
-.chat-box .banner .contact {
-  width: 400px;
+#contact-banner {
+  flex-basis: 90%;
+}
+#contact-banner .contact {
+  justify-content: flex-start;
 }
 .chat-thread {
   width: 100%;
@@ -196,7 +200,7 @@ i {
   border-radius: 10px;
   margin: 5px;
   padding: 15px 20px;
-  filter: drop-shadow(2px 2px 4px #b7b9bb);
+  filter: drop-shadow(2px 2px 4px hsla(0,0%,50%,0.5));
 }
 .message-box .message-time {
   position: absolute;
@@ -277,4 +281,31 @@ i {
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
+}
+/* media queries */
+@media all and (max-width: 900px) {
+  .container {
+    width: 100%;
+    height: 100vh;
+  }
+  .contacts {
+    display: none;
+  }
+  .chat-box {
+    width: 100%;
+  }
+  .chat-thread {
+    height: calc(100% - 150px);
+  }
+  #contact-banner .last-access {
+    font-size: 12px;
+  }
+  .input-message {
+    height: 80px;
+  }
+}
+@media all and (max-width: 350px) {
+  #contact-banner .last-access {
+    display: none;
+  }
 }
