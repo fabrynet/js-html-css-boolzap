@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script type="text/javascript" src="./js/script.js"></script>
   </head>
   <body>
@@ -143,7 +144,7 @@
         <!-- /contact-list -->
       </div>
       <!-- /contatti -->
-      
+
       <!-- chat -->
       <div class="chat-box">
         <div class="banner">
@@ -174,12 +175,12 @@
         <div class="chat-thread">
 
           <!-- template -->
-          <div class="template" style="display:none;">
+          <template>
             <!-- template messaggio -->
-            <div class="message-box" data-contact=''>
+            <div class="message-box {{ type }}" data-contact=''>
               <div class="message-box-text">
-                <span class="message-text"></span>
-                <span class="message-time"></span>
+                <span class="message-text">{{ txt }}</span>
+                <span class="message-time">{{ time }}</span>
                 <i class="fas fa-chevron-down message-box-options"></i>
                 <div class="message-box-options-panel">
                   <ul>
@@ -189,7 +190,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </template>
           <!-- /template -->
 
           <div class="chat active" data-contact='0'>

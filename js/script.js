@@ -120,9 +120,9 @@ function sendChat(input, txt) {
   input.val('');
   // passo l'id del data-contact per avere traccia della conversazione da cui è partito il messaggio
   var id = $('.chat.active').data("contact");
-  sendMessage(txt, 'sent',id);
+  sendMessage(txt, 'sent', id);
   setTimeout(function(){
-    sendMessage(randomReply,'received',id);
+    sendMessage(randomReply, 'received', id);
     insertLastMessage(id);
   }, 2000);
   moveContactFirstPosition();
@@ -132,17 +132,26 @@ function sendChat(input, txt) {
 function sendMessage(txt, type, id) {
 
   var time = getActualHour();
-  var templateMessage = $('.template .message-box').clone();
-  // var chatActive = $('.chat.active');
+
+  var templateMessage = $('template').html();
+  var compiledMessage = Handlebars.compile(templateMessage);
+
+  var objMessage = {
+    'type': type,
+    'txt': txt,
+    'time': time
+  };
+
+  var messageHTML = compiledMessage(objMessage);
   var chatActive = $('.chat[data-contact=' + id + ']')
-
-  templateMessage.addClass(type);
-  templateMessage.find('.message-time').text(time);
-  templateMessage.find('.message-text').text(txt);
-
-  chatActive.append(templateMessage);
+  chatActive.append(messageHTML);
   // console.log(chatActive);
 
+  // var templateMessage = $('.template .message-box').clone();
+  // var chatActive = $('.chat.active');
+  // templateMessage.addClass(type);
+  // templateMessage.find('.message-time').text(time);
+  // templateMessage.find('.message-text').text(txt);
 }
 
 function insertLastMessage (id) {
